@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SmartBrain
 
-## Available Scripts
+This is a face detection React App meant to learn React and Node using NPM and the Clarifai API.
 
-In the project directory, you can run:
+## Links
+* [Code](https://github.com/nair-ayush/SmartBrain)
+* [Documentation]()
+* [Website]()
 
-### `npm start`
+## Roadmap
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ - [X] Front end pages => Login, Home, Register
+ - [X] Sync up the Clarifai App and visualise bounding box
+ - [] Set up Node server
+ - [] Connect Postgres database
+ - [] Interlock all components with the API.
+ - [] Deploy
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Usage
 
-### `npm test`
+1. Signin/Login
+    * Enter email and password to login or click on the register buttons to register and create an account.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Home
+    * Enter the URL in the input box and press the Detect Button
+    * The imag will display below the bar along with the bounding box detecting the face, if any.
+    * Based on the number of users and the times you have detected faces, the app will give you a ranking of where you stand on the leaderboard.
+3. Register
+    * Fill the form and it will take you to the login page to signin.
 
-### `npm run build`
+## Dependencies
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. [Particles ^2.4.2](https://www.npmjs.com/package/react-particles-js)
+2. [Tachyons ^4.11.1](https://www.npmjs.com/package/tachyons)
+3. [Clarifai ^2.9.0](https://www.npmjs.com/package/clarifai)
+    * Visit their website [here](https://clarifai.com/).
+4. [Tilt ^0.1.4](https://www.npmjs.com/package/react-tilt)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## React Versions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. React v16.8.2
+2. React-DOM v16.8.2
+3. React-Scripts v2.1.5
 
-### `npm run eject`
+## Face Detection
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The Clarifai API provides several models of which we are using the FACE_DETECT model which responds with all the locations of the faces in the image. Currently we are detecting only one face. the location of the face are in `data.outputs[INDEX].data.regions[INDEX].region_info.bounding_box`. Below is the code for predicting:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+const app = new Clarifai.App({
+    apiKey: YOUR_OWN_API_KEY
+    });
+app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+    .then(response => this.displayBox(this.findFace(response)))
+    .catch(err => console.log(err))
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contributing
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Please fork this repository and checkout to a new branch to start working.
+s
