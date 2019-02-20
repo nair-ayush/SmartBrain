@@ -4,7 +4,7 @@ This is a face detection React App meant to learn React and Node using NPM and t
 
 ## Links
 * [Code](https://github.com/nair-ayush/SmartBrain)
-* [Documentation]()
+* [Documentation](https://nair-ayush.github.io/SmartBrain/)
 * [Website]()
 
 ## Roadmap
