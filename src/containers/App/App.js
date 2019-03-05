@@ -4,9 +4,12 @@ import Clarifai from "clarifai";
 import './App.css';
 
 import Navigation from '../../components/Navigation/Navigation';
+import SignIn from '../../components/SignIn/SignIn';
 import Logo from '../../components/Logo/Logo';
 import ImageLinkForm from '../../components/ImageLinkForm/ImageLinkForm';
 import Rank from '../../components/Rank/Rank';
+import Register from '../../components/Register/Register';
+
 import FaceRecognition from '../../components/FaceRecognition/FaceRecognition';
 
 const particleParameters = {
@@ -17,7 +20,6 @@ const particleParameters = {
         }
     }
 };
-
 const app = new Clarifai.App({
     apiKey: '61e34b186fda458494bc6aa8f68598af'
     });
@@ -28,7 +30,8 @@ class App extends Component {
         this.state = {
             input: '',
             imageURL: '',
-            box: ''
+            box: '',
+            route: 'signIn',
         };
     }
     findFace = (data) => {
@@ -56,17 +59,42 @@ class App extends Component {
             .then(response => this.displayBox(this.findFace(response)))
             .catch(err => console.log(err))
     }
+    onRouteChange = (route) => {
+        this.setState({route: route});
+    }
     render() {
-        return (
-            <div className="App">
-                <Particles className='particles' params={particleParameters}/>
-                <Navigation />
-                <Logo />
-                <Rank />
-                <ImageLinkForm onInputChange={this.onInputChange} onDetect={this.onDetect}/>
-                <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/>
-            </div>
-        );
+        const { imageURL, box, route} = this.state;
+        switch (route) {
+            case 'register':
+                return (
+                    <div className="App">
+                        <Particles className='particles' params={particleParameters}/>
+                        <Navigation onRouteChange={this.onRouteChange} page={route}/>
+                        <Register onRouteChange={this.onRouteChange}/>
+                    </div>
+                )
+            case 'signIn': 
+                return (
+                    <div className="App">
+                        <Particles className='particles' params={particleParameters}/>
+                        <Navigation onRouteChange={this.onRouteChange} page={route}/>
+                        <SignIn onRouteChange={this.onRouteChange}/>
+                    </div>
+                )
+            case 'home':
+                return (
+                    <div className="App">
+                        <Particles className='particles' params={particleParameters}/>
+                        <Navigation onRouteChange={this.onRouteChange} page={route}/>
+                        <Logo />
+                        <Rank />
+                        <ImageLinkForm onInputChange={this.onInputChange} onDetect={this.onDetect}/>
+                        <FaceRecognition box={box} imageURL={imageURL}/>
+                    </div>
+                )
+            default:
+                break;
+        }
     }
 }
 
