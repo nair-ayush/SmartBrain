@@ -32,7 +32,6 @@ class App extends Component {
             imageURL: '',
             box: '',
             route: 'signIn',
-            // isSignedIn: false
         };
     }
     findFace = (data) => {
@@ -61,27 +60,24 @@ class App extends Component {
             .catch(err => console.log(err))
     }
     onRouteChange = (route) => {
-        // if (this.state.isSignedIn === 'home') {
-        //     this.setState({isSignedIn: true})
-        // } else {
-        //     this.setState({isSignedIn: false});
-        // }
         this.setState({route: route});
     }
     render() {
-        switch (this.state.route) {
+        const { imageURL, box, route} = this.state;
+        switch (route) {
             case 'register':
                 return (
                     <div className="App">
                         <Particles className='particles' params={particleParameters}/>
+                        <Navigation onRouteChange={this.onRouteChange} page={route}/>
                         <Register onRouteChange={this.onRouteChange}/>
                     </div>
                 )
-            case 'signIn':
+            case 'signIn': 
                 return (
                     <div className="App">
                         <Particles className='particles' params={particleParameters}/>
-                        {/* <Navigation onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/> */}
+                        <Navigation onRouteChange={this.onRouteChange} page={route}/>
                         <SignIn onRouteChange={this.onRouteChange}/>
                     </div>
                 )
@@ -89,11 +85,11 @@ class App extends Component {
                 return (
                     <div className="App">
                         <Particles className='particles' params={particleParameters}/>
-                        <Navigation onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
+                        <Navigation onRouteChange={this.onRouteChange} page={route}/>
                         <Logo />
                         <Rank />
                         <ImageLinkForm onInputChange={this.onInputChange} onDetect={this.onDetect}/>
-                        <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/>
+                        <FaceRecognition box={box} imageURL={imageURL}/>
                     </div>
                 )
             default:
