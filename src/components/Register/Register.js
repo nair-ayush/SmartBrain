@@ -28,12 +28,12 @@ class Register extends Component {
                 password: this.state.password
             })
         }).then(response => response.json()).then(user => {
-            if (user) {
+            if (user.id) {
                 this.props.loadUser(user);
                 this.props.onRouteChange('signIn');     
             }
         })
-    }
+    } 
     render() {
         return(
             <article className="br2 shadow-1 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center">
