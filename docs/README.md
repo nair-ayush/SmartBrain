@@ -3,37 +3,39 @@
 This is a face detection React App meant to learn React and Node using NPM and the Clarifai API.
 
 ## Links
-* [Code](https://github.com/nair-ayush/SmartBrain)
-* [Documentation](https://nair-ayush.github.io/SmartBrain/)
-* [Website]()
+
+-   [Code](https://github.com/nair-ayush/SmartBrain)
+-   [Documentation](https://nair-ayush.github.io/SmartBrain/)
+-   [Website](https://smartbraincla.herokuapp.com/)
 
 ## Roadmap
 
- - [X] Front end pages => Login, Home, Register
- - [X] Sync up the Clarifai App and visualise bounding box
- - [] Set up Node server
- - [] Connect Postgres database
- - [] Interlock all components with the API.
- - [] Deploy
+-   [x] Front end pages => Login, Home, Register
+-   [x] Sync up the Clarifai App and visualise bounding box
+-   [x] Set up Node server
+-   [x] Connect Postgres database
+-   [x] Interlock all components with the API.
+-   [x] Deploy
 
 ## Usage
 
 1. Signin/Login
-    * Enter email and password to login or click on the register buttons to register and create an account.
+
+    - Enter email and password to login or click on the register buttons to register and create an account.
 
 2. Home
-    * Enter the URL in the input box and press the Detect Button
-    * The imag will display below the bar along with the bounding box detecting the face, if any.
-    * Based on the number of users and the times you have detected faces, the app will give you a ranking of where you stand on the leaderboard.
+    - Enter the URL in the input box and press the Detect Button
+    - The image will display below the bar along with the bounding box detecting the face, if any.
+    - Based on the number of users and the times you have detected faces, the app will give you a ranking of where you stand on the leaderboard.
 3. Register
-    * Fill the form and it will take you to the login page to signin.
+    - Fill the form and it will take you to the login page to signin.
 
 ## Dependencies
 
 1. [Particles ^2.4.2](https://www.npmjs.com/package/react-particles-js)
 2. [Tachyons ^4.11.1](https://www.npmjs.com/package/tachyons)
 3. [Clarifai ^2.9.0](https://www.npmjs.com/package/clarifai)
-    * Visit their website [here](https://clarifai.com/).
+    - Visit their website [here](https://clarifai.com/).
 4. [Tilt ^0.1.4](https://www.npmjs.com/package/react-tilt)
 
 ## React Versions
