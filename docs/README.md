@@ -61,4 +61,3 @@ app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
 ## Contributing
 
 Please fork this repository and checkout to a new branch to start working.
-s
